@@ -1,0 +1,20 @@
+- name: Copy kuatan.service
+  become: yes
+  copy:
+    src: kuatan.service
+    dest: /etc/systemd/system/kuatan.service
+    mode: '0644'
+  notify:
+    - Reload systemd
+    - Start kuatan
+
+- name: Reload systemd
+  become: yes
+  systemd:
+    daemon_reload: yes
+
+- name: Start kuatan
+  become: yes
+  systemd:
+    name: kuatan
+    state: started

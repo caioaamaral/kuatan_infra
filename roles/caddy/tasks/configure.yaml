@@ -1,0 +1,13 @@
+- name: Copy custom Caddyfile
+  copy:
+    src: Caddyfile
+    dest: /etc/caddy/Caddyfile
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Restart Caddy
+  systemd:
+    name: caddy
+    state: restarted
+    enabled: yes
