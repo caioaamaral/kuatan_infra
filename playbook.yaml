@@ -1,0 +1,7 @@
+---
+- hosts: 54.232.140.220
+  become: yes  # Run tasks as root
+
+  roles:
+    # - caddy  # web server
+    - kuatan-ai  # app server

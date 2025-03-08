@@ -1,0 +1,13 @@
+[Unit]
+Description=Reflex background service
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/dev/mental-health
+ExecStart=/bin/bash -c 'source /home/ubuntu/dev/mental-health/.venv/bin/activate && reflex run --backend-port 8000 --frontend-port 3000'
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
